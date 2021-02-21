@@ -11,8 +11,8 @@ interface Profile {
   image: string;
 }
 
-const CardItem = ({ profile, handleSwipeResult, drag, likeState, setLoading, counter, length, loading }:  {likeState: string, profile: Profile, drag: boolean, handleSwipeResult: Function, loading : boolean, setLoading: Function, length: number, counter: any}) => {
-  const cardEl : any = useRef(null)
+const CardItem = ({ profile, handleSwipeResult, drag, likeState, setLoading, counter, length, loading }: { likeState: string, profile: Profile, drag: boolean, handleSwipeResult: Function, loading: boolean, setLoading: Function, length: number, counter: any }) => {
+  const cardEl: any = useRef(null)
   const x = useMotionValue(0)
   const control = useAnimation()
   const [initialPosition, setInitialPosition] = useState<number>(0)
@@ -31,7 +31,7 @@ const CardItem = ({ profile, handleSwipeResult, drag, likeState, setLoading, cou
   }
 
   //Swipe left or Right?
-  const getResult = (childNode : any, parentNode : any) => {
+  const getResult = (childNode: any, parentNode: any) => {
     const child = childNode.getBoundingClientRect()
     const parent = parentNode.getBoundingClientRect()
     let result =
@@ -44,8 +44,8 @@ const CardItem = ({ profile, handleSwipeResult, drag, likeState, setLoading, cou
   }
 
   //Speed to trigger swipe
-  const flyAway = (min : number) => {
-    const flyAwayDistance = (direction : string) => {
+  const flyAway = (min: number) => {
+    const flyAwayDistance = (direction: string) => {
       const parentWidth = cardEl.current.parentNode.getBoundingClientRect()
         .width
       const childWidth = cardEl.current.getBoundingClientRect().width
@@ -69,8 +69,8 @@ const CardItem = ({ profile, handleSwipeResult, drag, likeState, setLoading, cou
       const parentNode = cardEl.current.parentNode
       const result = getResult(childNode, parentNode)
       setShiftedPosition(childNode.getBoundingClientRect().x - initialPosition)
-      if(result !== undefined){
-      handleSwipeResult(profile, result)
+      if (result !== undefined) {
+        handleSwipeResult(profile, result)
       }
     })
     return () => unsubscribe()
@@ -82,13 +82,13 @@ const CardItem = ({ profile, handleSwipeResult, drag, likeState, setLoading, cou
   }, [loading])
 
   //Handling Button press
-  useEffect(()=> {
+  useEffect(() => {
     setTimeout(() => {
-      if(likeState === "like"){
+      if (likeState === "like") {
         handleSwipeResult(profile, true)
-      } else if(likeState === "reject") {
+      } else if (likeState === "reject") {
         handleSwipeResult(profile, false)
-      } 
+      }
     }, 450);
   }, [likeState])
 
@@ -96,7 +96,7 @@ const CardItem = ({ profile, handleSwipeResult, drag, likeState, setLoading, cou
   //For loading spinner  
   const handleLoaded = () => {
     counter.current += 1;
-    if(counter.current >= length){
+    if (counter.current >= length) {
       setLoading(false)
     }
   }
@@ -112,20 +112,20 @@ const CardItem = ({ profile, handleSwipeResult, drag, likeState, setLoading, cou
       onDrag={getMovementState}
       onDragEnd={() => flyAway(500)}
       drag={drag}>
-      <div className={`carditem-wrapper ${drag && likeState}`} style={{ transform: `rotate(${shiftedPosition/50}deg) scale(${drag ? 1.006 : 1})`}}>
-      <img onLoad={handleLoaded} className="carditem-image" src={profile.image} alt={profile.name} draggable="false"></img>
-      <div className="status-wrapper">
-      <img src={pass} alt="pass" style={{ opacity: `${shiftedPosition / 400}` }} className="carditem-icon"></img>
-          <h2 style={{ opacity: `${shiftedPosition / 400}`, color: 'lightgreen'}}>LIKE</h2>
-      </div>
-      <div className="status-wrapper">
+      <div className={`carditem-wrapper ${drag && likeState}`} style={{ transform: `rotate(${shiftedPosition / 50}deg) scale(${drag ? 1.006 : 1})` }}>
+        <img onLoad={handleLoaded} className="carditem-image" src={profile.image} alt={profile.name} draggable="false"></img>
+        <div className="status-wrapper">
+          <img src={pass} alt="pass" style={{ opacity: `${shiftedPosition / 400}` }} className="carditem-icon"></img>
+          <h2 style={{ opacity: `${shiftedPosition / 400}`, color: 'lightgreen' }}>LIKE</h2>
+        </div>
+        <div className="status-wrapper">
           <img src={reject} alt="reject" style={{ opacity: `${-shiftedPosition / 400}` }} className="carditem-icon"></img>
-      <h2 style={{opacity: `${-shiftedPosition/400}`, color: 'red'}}>NOPE</h2>
-      </div>
-      <div className="carditem-textwrap">
-      <h1 className="carditem-name">{profile.name} {profile.age}</h1>
-      <h2 className="carditem-description">{profile.description}</h2>
-      </div>
+          <h2 style={{ opacity: `${-shiftedPosition / 400}`, color: 'red' }}>NOPE</h2>
+        </div>
+        <div className="carditem-textwrap">
+          <h1 className="carditem-name">{profile.name} {profile.age}</h1>
+          <h2 className="carditem-description">{profile.description}</h2>
+        </div>
       </div>
     </motion.div>
   )
