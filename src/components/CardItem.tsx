@@ -24,9 +24,9 @@ const CardItem = ({
   likeState: string;
   profile: Profile;
   drag: boolean;
-  handleSwipeResult: any;
+  handleSwipeResult: Function;
   loading: boolean;
-  setLoading: any;
+  setLoading: Function;
   length: number;
   counter: any;
 }) => {
