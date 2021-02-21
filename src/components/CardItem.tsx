@@ -11,7 +11,7 @@ interface Profile {
   image: string;
 }
 
-const CardItem = ({ profile, handleSwipeResult, drag, likeState, setLoading, counter, length }:  {likeState: string, profile: Profile, drag: boolean, handleSwipeResult: Function, loading : boolean, setLoading: Function, length: number, counter: any}) => {
+const CardItem = ({ profile, handleSwipeResult, drag, likeState, setLoading, counter, length, loading }:  {likeState: string, profile: Profile, drag: boolean, handleSwipeResult: Function, loading : boolean, setLoading: Function, length: number, counter: any}) => {
   const cardEl : any = useRef(null)
   const x = useMotionValue(0)
   const control = useAnimation()
@@ -72,10 +72,12 @@ const CardItem = ({ profile, handleSwipeResult, drag, likeState, setLoading, cou
     })
     return () => unsubscribe()
   })
+
   
   useEffect(() => {
+    console.log(cardEl.current.getBoundingClientRect().x, 'USE')
     setInitialPosition(cardEl.current.getBoundingClientRect().x)
-  }, [])
+  }, [loading])
 
   useEffect(()=> {
     setTimeout(() => {
@@ -104,7 +106,7 @@ const CardItem = ({ profile, handleSwipeResult, drag, likeState, setLoading, cou
       ref={cardEl}
       style={{ x }}
       onDrag={getMovementState}
-      onDragEnd={() => flyAway(600)}
+      onDragEnd={() => flyAway(500)}
       drag={drag}>
       <div className={`carditem-wrapper ${drag && likeState}`} style={{ transform: `rotate(${shiftedPosition/50}deg) scale(${drag ? 1.006 : 1})`}}>
       <img onLoad={handleLoaded} className="carditem-image" src={profile.image} alt={profile.name} draggable="false"></img>
