@@ -61,8 +61,10 @@
 
 @keyframes right {
   0% { left: 0px} 
+  /* 50% { left: 200%; transform: rotate(20deg)} */
   100% {
-    left: 400%;
+    left: 400%; 
+    transform: rotate(40deg);
   }
 }
 
@@ -70,5 +72,6 @@
   0% { right: 0px} 
   100% {
     right: 400%;
+    transform: rotate(-40deg);
   }
 }

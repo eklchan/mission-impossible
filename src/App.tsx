@@ -60,6 +60,8 @@ function App() {
   }) 
 
   const handleReset = () => {
+    setLoading(true)
+    counter.current = 0
     setStack(profiles);
     setRejected([]);
     setAccepted([]);

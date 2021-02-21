@@ -11,15 +11,16 @@
   background-color: #f5f7fa;
   width: 100%;
   display: flex;
+  padding-top: 5vw;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   overflow: hidden;
 }
 
 .button-wrap {
   position: relative;
-  top: 365px;
+  top: 620px;
   display: flex;
   width: 400px;
   justify-content: space-around;
@@ -53,7 +54,6 @@
 
 .results-wrap {
   align-self: flex-start;
-  margin-top: 220px;
   width: 80%;
 }
 
@@ -73,8 +73,9 @@
 
 .mission-logo {
   position: absolute;
-  top: 50px;
-  transform: scale(0.7);
+  top: 2vh;
+  height: 3vw;
+  width: 15vw
 }
 
 .again-button {
