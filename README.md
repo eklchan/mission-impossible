@@ -13,3 +13,4 @@
 
  - Not optimized for mobile devices; Laptop / Desktop Screens only
  - Uses hard coded json data and not an API 
+ - Tested on Google Chrome 
