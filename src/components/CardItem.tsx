@@ -21,6 +21,16 @@ const CardItem = ({ profile, handleSwipeResult, drag, likeState, setLoading, cou
   const [direction, setDirection] = useState<string>()
   const [velocity, setVelocity] = useState<number>(0)
 
+  const getDirection = () => {
+    return velocity >= 1 ? "right" : velocity <= -1 ? "left" : undefined
+  }
+
+  const getMovementState = () => {
+    setVelocity(x.getVelocity())
+    setDirection(getDirection())
+  }
+
+  //Swipe left or Right?
   const getResult = (childNode : any, parentNode : any) => {
     const child = childNode.getBoundingClientRect()
     const parent = parentNode.getBoundingClientRect()
@@ -33,15 +43,7 @@ const CardItem = ({ profile, handleSwipeResult, drag, likeState, setLoading, cou
     return result
   }
 
-  const getDirection = () => {
-    return velocity >= 1 ? "right" : velocity <= -1 ? "left" : undefined
-  }
-
-  const getMovementState = () => {
-    setVelocity(x.getVelocity())
-    setDirection(getDirection())
-  }
-
+  //Speed to trigger swipe
   const flyAway = (min : number) => {
     const flyAwayDistance = (direction : string) => {
       const parentWidth = cardEl.current.parentNode.getBoundingClientRect()
@@ -60,6 +62,7 @@ const CardItem = ({ profile, handleSwipeResult, drag, likeState, setLoading, cou
     }
   }
 
+  //Event listener for card drag
   useEffect(() => {
     const unsubscribe = x.onChange(() => {
       const childNode = cardEl.current
@@ -73,12 +76,12 @@ const CardItem = ({ profile, handleSwipeResult, drag, likeState, setLoading, cou
     return () => unsubscribe()
   })
 
-  
+  //Initial position of Card
   useEffect(() => {
-    console.log(cardEl.current.getBoundingClientRect().x, 'USE')
     setInitialPosition(cardEl.current.getBoundingClientRect().x)
   }, [loading])
 
+  //Handling Button press
   useEffect(()=> {
     setTimeout(() => {
       if(likeState === "like"){
@@ -90,6 +93,7 @@ const CardItem = ({ profile, handleSwipeResult, drag, likeState, setLoading, cou
   }, [likeState])
 
 
+  //For loading spinner  
   const handleLoaded = () => {
     counter.current += 1;
     if(counter.current >= length){

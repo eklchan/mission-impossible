@@ -28,12 +28,14 @@ function App() {
     setLikeState("reject")
   }
 
+  //triggered if button pressed instead  
   const handleAccept = () => {
     setLikeState("like")
   }
 
+  //Updates Stack and stores swipe result
   const handleSwipeResult = (profile : Profile, result : boolean) => {
-    console.log(profile, result, "PROF")
+    // console.log(profile, result, "PROF")
     let updatedStack : Array<Profile> = stack.filter((prof, i) => {
       return (
         i < stack.length - 1
@@ -59,9 +61,10 @@ function App() {
     )
   }) 
 
+  //RESET ALL STATE
   const handleReset = () => {
     setLoading(true)
-    counter.current = 0
+    counter.current = 0;
     setStack(profiles);
     setRejected([]);
     setAccepted([]);
