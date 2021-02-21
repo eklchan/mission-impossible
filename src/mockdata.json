@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Tom Cruise",
+    "age": 48,
+    "description": "an actor from somewhere in the US",
+    "image": "https://cdn.britannica.com/68/178268-050-5B4E7FB6/Tom-Cruise-2013.jpg"
+  },
+  {
+    "name": "Dwayne Johnson",
+    "age": 48,
+    "description": "aka THE ROCK",
+    "image": "https://assets.vogue.com/photos/59132f18dc6868483f55b55a/master/w_2560%2Cc_limit/00-lede-the-rock.jpg"
+  },
+  {
+    "name": "Gal Gadot",
+    "age": 35,
+    "description": "True Wonderwoman from Israel",
+    "image": "https://www.jewishvirtuallibrary.org/jsource/images/People/galgadot.jpg"
+  },
+  {
+    "name": "Jackie Chan",
+    "age": 66,
+    "description": "From Hong Kong",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Jackie_Chan_July_2016.jpg"
+  },
+  {
+    "name": "Nicholas Cage",
+    "age": 57,
+    "description": "Crazy Cage",
+    "image": "https://www.wweek.com/resizer/86tt-U3ytIrtb7bBYXAIg7XWz7A=/1200x0/filters:quality(100)/s3.amazonaws.com/arc-wordpress-client-uploads/wweek/wp-content/uploads/2019/08/30145212/Nicolas-Cage.jpg"
+  },
+  {
+    "name": "Angelina Jolie",
+    "age": 45,
+    "description": "Hollywood's highest paid actress",
+    "image": "https://cdn.britannica.com/61/103761-050-0174C1D5/Angelina-Jolie-Hollywood.jpg"
+  },
+  {
+    "name": "Idris Elba",
+    "age": 42,
+    "description": "Future James Bond",
+    "image": "https://m.media-amazon.com/images/M/MV5BNzEzMTI2NjEyNF5BMl5BanBnXkFtZTcwNTA0OTE4OA@@._V1_.jpg"
+  },
+  {
+    "name": "Sean Bean",
+    "age": 61,
+    "description": "Dies in practically every movie",
+    "image": "https://static.wikia.nocookie.net/lotr/images/f/fd/Sean_Bean.jpg/revision/latest?cb=20130119104825"
+  }
+]
